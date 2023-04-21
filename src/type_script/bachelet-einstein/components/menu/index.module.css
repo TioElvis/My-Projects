@@ -1,0 +1,44 @@
+.icon {
+  width: 1.75rem;
+}
+
+.icon:hover {
+  cursor: pointer;
+  color: var(--light-blue);
+}
+
+.menu {
+  width: 20rem;
+  height: 100%;
+  padding: 2.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  font-family: var(--alice);
+  background-color: var(--dark-blue);
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.link {
+  color: white;
+  font-size: 0.975rem;
+  padding: 1.25rem 0;
+  border-bottom: solid 1px white;
+}
+
+.link:hover {
+  color: var(--light-blue);
+  border-bottom: solid 1px var(--light-blue);
+}
+
+@media (min-width: 900px) {
+  .icon {
+    display: none;
+  }
+}

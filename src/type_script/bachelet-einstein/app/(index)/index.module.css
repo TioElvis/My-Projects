@@ -1,0 +1,134 @@
+.header {
+  width: 100%;
+  height: auto;
+  padding: 1.25rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  font-family: var(--alice);
+  background-color: var(--dark-blue);
+}
+
+.navbar {
+  gap: 0.5rem;
+  display: none;
+  align-items: center;
+}
+
+.link {
+  color: white;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  border-right: solid 1px white;
+}
+
+.link:hover {
+  color: var(--light-blue);
+}
+
+/* Home page */
+.container {
+  width: 100%;
+  height: 39rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: var(--main-image);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.container > div {
+  width: 90%;
+  height: 15rem;
+  color: white;
+  display: grid;
+  text-align: center;
+  place-content: center;
+  font-family: var(--abhaya-libre);
+  background-color: var(--dark-blue);
+}
+
+.name_of_school {
+  font-size: 2.25rem;
+}
+
+.welcome {
+  font-size: 0.9rem;
+}
+
+.why_select_this_school {
+  width: 100%;
+  height: 60rem;
+  font-family: var(--lora);
+}
+
+.question {
+  width: 100%;
+  height: 50%;
+  padding: 0 10%;
+  display: grid;
+  place-content: center;
+}
+
+.options {
+  width: 100%;
+  height: 50%;
+}
+
+.option {
+  width: 100%;
+  height: 33.3%;
+  padding: 2rem;
+  font-size: 1.125rem;
+}
+
+.option > header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  width: 2rem;
+}
+
+@media (min-width: 900px) {
+  .navbar {
+    display: flex;
+  }
+
+  .container > div {
+    width: 45rem;
+  }
+
+  .name_of_school {
+    font-size: 3rem;
+  }
+
+  .welcome {
+    font-size: 1.25rem;
+  }
+
+  .why_select_this_school {
+    height: 30rem;
+    display: flex;
+  }
+
+  .question {
+    width: 50%;
+    height: 100%;
+  }
+
+  .options {
+    width: 50%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+}

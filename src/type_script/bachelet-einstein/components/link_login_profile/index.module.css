@@ -1,0 +1,15 @@
+.link {
+  color: white;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.link:hover {
+  color: var(--light-blue);
+}
+
+.icon {
+  width: 1.45rem;
+}

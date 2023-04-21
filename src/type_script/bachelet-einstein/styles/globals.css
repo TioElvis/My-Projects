@@ -1,0 +1,47 @@
+/* Playfair Display */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+/* Alice */
+@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+/* Lora */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap');
+/* Source Sans Pro */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+/* Abhaya Libre */
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* colors */
+:root {
+  --dark-gold: #c1a57b;
+  --blue: #30475e;
+  --light-blue: #6fc5ff;
+  --light-blue-second: #056087;
+  --dark-blue: #06283d;
+  --light-gray: #e2e1e1;
+  --gray: #4d4d4d;
+  --gray-transparent-hover: #e4e4e49e;
+}
+
+/* fonts */
+:root {
+  --playfair-display: 'Playfair Display', serif;
+  --alice: 'Alice', serif;
+  --lora: 'Lora', serif;
+  --source-sans-pro: 'Source Sans Pro', sans-serif;
+  --abhaya-libre: 'Abhaya Libre', serif;
+}
+
+/* images-url */
+:root {
+  --main-image: url('https://res.cloudinary.com/descpalk4/image/upload/v1679849995/cropped-1920-700-437756_a0aicl.jpg');
+}
+
+/* globals */
+a {
+  text-decoration: none;
+}
