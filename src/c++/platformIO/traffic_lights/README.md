@@ -4,7 +4,7 @@ Un ejemplo de un semaforo a dos vias, escrito en el lenguaje de programacion c++
 
 ## Como fuciona?
 
-Dividi los semaforos en dos maneras, el primer semaforo estara en el eje horizontal y el segundo estara en el eje vertical 
+Dividi los semaforos en dos maneras, el primer semaforo estara en el eje horizontal y el segundo estara en el eje vertical.
 
 ![Ejemplo](traffic_lights.png)
 
