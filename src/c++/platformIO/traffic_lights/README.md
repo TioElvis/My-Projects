@@ -4,7 +4,7 @@ Un ejemplo de un semaforo a dos vias, escrito en el lenguaje de programacion c++
 
 ## Como lo hice?
 
-Dividi los semaforos en dos maneras, el primer semaforo estara en el eje horizontal (X) y el segundo estara en el eje vertical (Y).
+Dividi los semaforos en dos maneras, el primer semaforo estara en el eje horizontal (X) y el segundo estara en el eje vertical (Y) y un semaforo aparte que sirve para saber que paso peatonal esta activo, el azul es del semaforo X y el blanco es del semaforo Y.
 
 ![Ejemplo](traffic_lights.png)
 
@@ -15,21 +15,25 @@ Con esta idea, dividi cada fase del semaforo:
   1. Primera fase:
       - LRx: 1 -> El LED rojo del semaforo X estara encendido.
       - LVy: 1 -> El LED verde del semaforo Y estara encendido.
+      - LCWy: 1 -> El LED blanco del paso peatonal del semaforo Y estara encendido.
       - Todos los demas LEDs estaran apagados.
 
   2. Segunda fase:
       - LRx: 1 -> El LED rojo del semaforo X estara encendido.
       - LYy: 1 -> El LED amarillo del semaforo Y estara encendido.
+      - LCWy: 1 -> El LED blanco del paso peatonal del semaforo Y estara encendido.
       - Todos los demas LEDs estaran apagados.
 
   3. Tercera fase:
       - LVx: 1 -> El LED verde del semaforo X estara encendido.
       - LRy: 1 -> El LED rojo del semaforo Y estara encendido.
+      - LVy: 1 -> El LED verde del semaforo Y estara encendido
       - Todos los demas LEDs estaran apagados. 
 
   4. Cuarta fase:
       - LYx: 1 -> El LED amarillo del semaforo X estara encendido.
       - LRy: 1 -> El LED rojo del semaforo Y estara encendido.
+      - LVy: 1 -> El LED verde del semaforo Y estara encendido
       - Todos los demas LEDs estaran apagados. 
 
 ### Creando el array      
@@ -37,12 +41,13 @@ Con esta idea, dividi cada fase del semaforo:
 Estas fases las almacene en un array de dos dimensiones, la primera es el numero de fases y la segunda es el numero de LEDs. 
 
 ```
-const LED phases[rows][columns] = {
-  {{LRx, 1}, {LYx, 0}, {LGx, 0}, {LRy, 0}, {LYy, 0}, {LGy, 1}},
+const LED _array[Phases][LEDs] = {
+  {{LRx, 1}, {LYx, 0}, {LGx, 0}, {LRy, 0}, {LYy, 0}, {LGy, 1}, {LCWx, 0}, {LCWy, 1}},
   {{LRx, 1}, {LYx, 0}, {LGx, 0}, {LRy, 0}, {LYy, 1}, {LGy, 0}},
-  {{LRx, 0}, {LYx, 0}, {LGx, 1}, {LRy, 1}, {LYy, 0}, {LGy, 0}},
+  {{LRx, 0}, {LYx, 0}, {LGx, 1}, {LRy, 1}, {LYy, 0}, {LGy, 0}, {LCWx, 1} , {LCWy, 0}},
   {{LRx, 0}, {LYx, 1}, {LGx, 0}, {LRy, 1}, {LYy, 0}, {LGy, 0}}
 };
+
 ```
 
 ### Tipo del array
@@ -58,7 +63,7 @@ struct LED{
 
 ### void setup()
 
-Declare dos variables de tipo booleano, crosswalk_x y crosswalk_y, estas variables inicializan con el valor false y cambian su estado cuando viene pedido el paso peatonal.
+Declare dos variables globales de tipo booleano, crosswalk_x y crosswalk_y, estas variables inicializan con el valor false y cambian su estado cuando viene pedido el paso peatonal.
 
 ```
 bool crosswalk_x = false; // Paso peatonal del semaforo x.

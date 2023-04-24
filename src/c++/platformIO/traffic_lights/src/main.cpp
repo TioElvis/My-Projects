@@ -1,26 +1,34 @@
 #include <Arduino.h>
 
-#define rows 4
-#define columns 6
+#define Phases 4 // Fases
+#define LEDs 8 // Numero de leds
 
+// Semaforo X
 #define LRx 4 
 #define LYx 5 
 #define LGx 6 
+
+// Semaforo Y
 #define LRy 7 
 #define LYy 8 
 #define LGy 9
+
+// Semaforo peatonal
+#define LCWx 10
+#define LCWy 11
 
 struct LED{
   const int pin;
   const int state;
 };
 
-const LED phases[rows][columns] = {
-  {{LRx, 1}, {LYx, 0}, {LGx, 0}, {LRy, 0}, {LYy, 0}, {LGy, 1}},
-  {{LRx, 1}, {LYx, 0}, {LGx, 0}, {LRy, 0}, {LYy, 1}, {LGy, 0}},
-  {{LRx, 0}, {LYx, 0}, {LGx, 1}, {LRy, 1}, {LYy, 0}, {LGy, 0}},
-  {{LRx, 0}, {LYx, 1}, {LGx, 0}, {LRy, 1}, {LYy, 0}, {LGy, 0}}
+const LED _array[Phases][LEDs] = {
+  {{LRx, 1}, {LYx, 0}, {LGx, 0}, {LRy, 0}, {LYy, 0}, {LGy, 1}, {LCWx, 0}, {LCWy, 1}},
+  {{LRx, 1}, {LYx, 0}, {LGx, 0}, {LRy, 0}, {LYy, 1}, {LGy, 0}, {LCWx, 0}, {LCWy, 1}}, 
+  {{LRx, 0}, {LYx, 0}, {LGx, 1}, {LRy, 1}, {LYy, 0}, {LGy, 0}, {LCWx, 1}, {LCWy, 0}},
+  {{LRx, 0}, {LYx, 1}, {LGx, 0}, {LRy, 1}, {LYy, 0}, {LGy, 0}, {LCWx, 1}, {LCWy, 0}}
 };
+
 
 bool crosswalk_x = false;
 bool crosswalk_y = false;
@@ -40,14 +48,13 @@ void setup(){
   pinMode(2, INPUT);
   pinMode(3, INPUT);
   attachInterrupt(digitalPinToInterrupt(2), change_state_crosswalk_x, RISING);
-  attachInterrupt(digitalPinToInterrupt(3), change_state_crosswalk_y, RISING);
-  Serial.begin(9600);
+  attachInterrupt(digitalPinToInterrupt(3), change_state_crosswalk_y, RISING);  
 }
   
 void loop(){
-  for(int i = 0; i < rows; i++){        
-    for(int j = 0; j < columns; j++){
-      digitalWrite(phases[i][j].pin, phases[i][j].state);
+  for(int i = 0; i < Phases; i++){        
+    for(int j = 0; j < LEDs; j++){
+      digitalWrite(_array[i][j].pin, _array[i][j].state);
     }  
     
     i == 0 || i == 2 ? delay(25000) : delay(15000);      
