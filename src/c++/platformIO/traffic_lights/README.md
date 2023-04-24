@@ -32,16 +32,16 @@ Con esta idea, dividi cada fase del semaforo:
 
 Estas fases las almacene en un array de dos dimensiones, la primera es el numero de fases y la segunda es el numero de LEDs. El tipo del array es una estructura de datos.
 
-`
+```
 struct LED{
   const int pin; // Numero del pin que se encuentra el LED.
   const int state; // Estado del LED.
 };
-`
+```
 
 Siguiendo con el codigo, dentro el void setup() hice lo siguiente:
 
-`
+```
   // Bucle que declara cada LED.
   for(int i = 4; i < 12; i++){
   	pinMode(i, OUTPUT);
@@ -51,7 +51,7 @@ Siguiendo con el codigo, dentro el void setup() hice lo siguiente:
   attachInterrupt(digitalPinToInterrupt(2), change_state_btn_x, RISING);
   attachInterrupt(digitalPinToInterrupt(3), change_state_btn_y, RISING);
   Serial.begin(9600);
-`
+```
 
 
 
