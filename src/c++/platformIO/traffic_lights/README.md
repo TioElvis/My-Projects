@@ -73,7 +73,7 @@ void setup(){
   }
   pinMode(2, INPUT); // El pin 2 sera el boton del paso peatonal del semaforo X.
   pinMode(3, INPUT); // El pin 3 sera el boton del paso peatonal del semaforo Y.
-  // Con este comando, interferimos con el codigo cuando viene pedido el paso peatonal y dependiendo del boton llamamos a una o a otra funcion.
+  // Interferimos con el codigo cuando el boton viene pulsado y llamamos a la funcion conectada al boton.  
   attachInterrupt(digitalPinToInterrupt(2), change_state_crosswalk_x, RISING);
   attachInterrupt(digitalPinToInterrupt(3), change_state_crosswalk_y, RISING);
   Serial.begin(9600);
