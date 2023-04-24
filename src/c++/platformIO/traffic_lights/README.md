@@ -8,6 +8,8 @@ Dividi los semaforos en dos maneras, el primer semaforo estara en el eje horizon
 
 ![Ejemplo](traffic_lights.png)
 
+### Fases
+
 Con esta idea, dividi cada fase del semaforo:
 
   1. Primera fase:
@@ -30,6 +32,8 @@ Con esta idea, dividi cada fase del semaforo:
       - LRy: 1 -> El LED rojo del semaforo Y estara encendido.
       - Todos los demas LEDs estaran apagados. 
 
+### Creando el array      
+
 Estas fases las almacene en un array de dos dimensiones, la primera es el numero de fases y la segunda es el numero de LEDs. 
 
 ```
@@ -41,6 +45,8 @@ const LED phases[rows][columns] = {
 };
 ```
 
+### Tipo del array
+
 El tipo del array es una estructura de datos:
 
 ```
@@ -49,6 +55,8 @@ struct LED{
   const int state; // Estado del LED.
 };
 ```
+
+### void setup()
 
 Declare dos variables de tipo booleano, crosswalk_x y crosswalk_y, estas variables inicializan con el valor false y cambian su estado cuando viene pedido el paso peatonal.
 
@@ -75,8 +83,7 @@ void setup(){
   pinMode(3, INPUT); // El pin 3 sera el boton del paso peatonal del semaforo Y.
   // Interferimos con el codigo cuando el boton viene pulsado y llamamos a la funcion conectada al boton.  
   attachInterrupt(digitalPinToInterrupt(2), change_state_crosswalk_x, RISING);
-  attachInterrupt(digitalPinToInterrupt(3), change_state_crosswalk_y, RISING);
-  Serial.begin(9600);
+  attachInterrupt(digitalPinToInterrupt(3), change_state_crosswalk_y, RISING);  
 }
 ```
 
