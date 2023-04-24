@@ -1,7 +1,7 @@
 # Two-way Traffic Lights
-Two-way Traffic Lights writin in c++ for arduino nanoatmega328 and arduino uno.
+Two-way Traffic Lights writin in c++ for arduino nanoatmega328 and uno.
 
-Example in arduino: https://www.tinkercad.com/things/fqNFZuvJh8c
+Example in tinkercad: https://www.tinkercad.com/things/fqNFZuvJh8c
 
 ## How does it work?
 I divided the traffic lights in two ways, the first traffic light will be on the horizontal axis (X) and the second will be on the vertical axis (Y).
