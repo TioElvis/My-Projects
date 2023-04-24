@@ -22,15 +22,15 @@ const LED phases[rows][columns] = {
   {{LRx, 0}, {LYx, 1}, {LGx, 0}, {LRy, 1}, {LYy, 0}, {LGy, 0}}
 };
 
-bool btn_state_x = false;
-bool btn_state_y = false;
+bool crosswalk_x = false;
+bool crosswalk_y = false;
 
-void change_state_btn_x(){
-	btn_state_x = true;
+void change_state_crosswalk_x(){
+	crosswalk_x = true;
 }
 
-void change_state_btn_y(){
-	btn_state_y = true;
+void change_state_crosswalk_y(){
+	crosswalk_y = true;
 }
 
 void setup(){
@@ -39,8 +39,8 @@ void setup(){
   }
   pinMode(2, INPUT);
   pinMode(3, INPUT);
-  attachInterrupt(digitalPinToInterrupt(2), change_state_btn_x, RISING);
-  attachInterrupt(digitalPinToInterrupt(3), change_state_btn_y, RISING);
+  attachInterrupt(digitalPinToInterrupt(2), change_state_crosswalk_x, RISING);
+  attachInterrupt(digitalPinToInterrupt(3), change_state_crosswalk_y, RISING);
   Serial.begin(9600);
 }
   
@@ -52,9 +52,9 @@ void loop(){
     
     i == 0 || i == 2 ? delay(25000) : delay(15000);      
 
-    if(btn_state_x == true && (i == 2 || i == 3)) btn_state_x = false;  
-    if(btn_state_y == true && (i == 0 || i == 1)) btn_state_y = false; 
+    if(crosswalk_x == true && (i == 2 || i == 3)) crosswalk_x = false;  
+    if(crosswalk_y == true && (i == 0 || i == 1)) crosswalk_y = false; 
     
-    if(btn_state_x == false && btn_state_y == false) delay(5000);  
+    if(crosswalk_x == false && crosswalk_y == false) delay(5000);  
   }  
 }

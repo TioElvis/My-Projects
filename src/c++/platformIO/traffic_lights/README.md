@@ -4,33 +4,44 @@ Un ejemplo de un semaforo a dos vias, escrito en el lenguaje de programacion c++
 
 ## Como lo hice?
 
-Dividi los semaforos en dos maneras, el primer semaforo estara en el eje x y el segundo estara en el eje y.
+Dividi los semaforos en dos maneras, el primer semaforo estara en el eje horizontal (X) y el segundo estara en el eje vertical (Y).
 
 ![Ejemplo](traffic_lights.png)
 
 Con esta idea, dividi cada fase del semaforo:
 
   1. Primera fase:
-      - LRx: 1 -> El LED rojo del semaforo del eje x estara encendido.
-      - LVy: 1 -> El LED verde del semaforo del eje y estara encendido.
+      - LRx: 1 -> El LED rojo del semaforo X estara encendido.
+      - LVy: 1 -> El LED verde del semaforo Y estara encendido.
       - Todos los demas LEDs estaran apagados.
 
   2. Segunda fase:
-      - LRx: 1 -> El LED rojo del semaforo del eje x estara encendido.
-      - LYy: 1 -> El LED amarillo del semaforo del eje y estara encendido.
+      - LRx: 1 -> El LED rojo del semaforo X estara encendido.
+      - LYy: 1 -> El LED amarillo del semaforo Y estara encendido.
       - Todos los demas LEDs estaran apagados.
 
   3. Tercera fase:
-      - LVx: 1 -> El LED verde del semaforo del eje x estara encendido.
-      - LRy: 1 -> El LED rojo del semaforo del eje y estara encendido.
+      - LVx: 1 -> El LED verde del semaforo X estara encendido.
+      - LRy: 1 -> El LED rojo del semaforo Y estara encendido.
       - Todos los demas LEDs estaran apagados. 
 
   4. Cuarta fase:
-      - LYx: 1 -> El LED amarillo del semaforo del eje x estara encendido.
-      - LRy: 1 -> El LED rojo del semaforo del eje y estara encendido.
+      - LYx: 1 -> El LED amarillo del semaforo X estara encendido.
+      - LRy: 1 -> El LED rojo del semaforo Y estara encendido.
       - Todos los demas LEDs estaran apagados. 
 
-Estas fases las almacene en un array de dos dimensiones, la primera es el numero de fases y la segunda es el numero de LEDs. El tipo del array es una estructura de datos.
+Estas fases las almacene en un array de dos dimensiones, la primera es el numero de fases y la segunda es el numero de LEDs. 
+
+```
+const LED phases[rows][columns] = {
+  {{LRx, 1}, {LYx, 0}, {LGx, 0}, {LRy, 0}, {LYy, 0}, {LGy, 1}},
+  {{LRx, 1}, {LYx, 0}, {LGx, 0}, {LRy, 0}, {LYy, 1}, {LGy, 0}},
+  {{LRx, 0}, {LYx, 0}, {LGx, 1}, {LRy, 1}, {LYy, 0}, {LGy, 0}},
+  {{LRx, 0}, {LYx, 1}, {LGx, 0}, {LRy, 1}, {LYy, 0}, {LGy, 0}}
+};
+```
+
+El tipo del array es una estructura de datos:
 
 ```
 struct LED{
@@ -39,18 +50,34 @@ struct LED{
 };
 ```
 
-Siguiendo con el codigo, dentro el void setup() hice lo siguiente:
+Declare dos variables de tipo booleano, crosswalk_x y crosswalk_y, estas variables inicializan con el valor false y cambian su estado cuando viene pedido el paso peatonal.
 
 ```
-  // Bucle que declara cada LED.
+bool crosswalk_x = false; // Paso peatonal del semaforo x.
+bool crosswalk_y = false; // Paso peatonal del semaforo y.
+
+// Funcion que cambia el estadp de la variable crosswalk_x a true.
+void change_state_crosswalk_x(){
+	crosswalk_x = true;
+}
+
+// Funcion que cambia el estadp de la variable crosswalk_y a true.
+void change_state_crosswalk_y(){
+	crosswalk_y = true;
+}
+
+void setup(){
+  // Declaramos cada pin que esta conectado a cada LED.
   for(int i = 4; i < 12; i++){
   	pinMode(i, OUTPUT);
   }
-  pinMode(2, INPUT); // Boton del paso peatonal del semaforo del eje x.
-  pinMode(3, INPUT); // Boton del paso peatonal del semaforo del eje x.
-  attachInterrupt(digitalPinToInterrupt(2), change_state_btn_x, RISING);
-  attachInterrupt(digitalPinToInterrupt(3), change_state_btn_y, RISING);
+  pinMode(2, INPUT); // El pin 2 sera el boton del paso peatonal del semaforo X.
+  pinMode(3, INPUT); // El pin 3 sera el boton del paso peatonal del semaforo Y.
+  // Con este comando, interferimos con el codigo cuando viene pedido el paso peatonal y dependiendo del boton llamamos a una o a otra funcion.
+  attachInterrupt(digitalPinToInterrupt(2), change_state_crosswalk_x, RISING);
+  attachInterrupt(digitalPinToInterrupt(3), change_state_crosswalk_y, RISING);
   Serial.begin(9600);
+}
 ```
 
 
