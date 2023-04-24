@@ -1,40 +1,44 @@
-# Semaforo a dos vias 
-Un ejemplo de un semaforo a dos vias, escrito en el lenguaje de programacion c++ para arduino nanoatmega328.
+# Two-way Traffic Lights
+Two-way Traffic Lights writin in c++ for arduino nanoatmega328 and arduino uno.
 
-## Como lo hice?
-Dividi los semaforos en dos maneras, el primer semaforo estara en el eje horizontal (X) y el segundo estara en el eje vertical (Y) y un semaforo aparte que sirve para saber que paso peatonal esta activo, el azul es del semaforo X y el blanco es del semaforo Y.
+Example in arduino: https://www.tinkercad.com/things/fqNFZuvJh8c
+
+## How does it work?
+I divided the traffic lights in two ways, the first traffic light will be on the horizontal axis (X) and the second will be on the vertical axis (Y).
+
+There is a third traffic light that use for crosswalk traffic light, the blue LED is the crosswalk of the traffic light X and the white LED is the crosswalk of the traffic light Y
 
 ![Ejemplo](traffic_lights.png)
 
-### Fases
-Con esta idea, dividi cada fase del semaforo:
+### Phases
+With this idea i divided the phases in:
 
-  1. Primera fase:
-      - LRx: 1 -> El LED rojo del semaforo X estara encendido.
-      - LVy: 1 -> El LED verde del semaforo Y estara encendido.
-      - LCWx: 1 -> El LED blanco del paso peatonal estara encendido.
-      - Todos los demas LEDs estaran apagados.
+  1. First Phase:
+      - LRx -> Red LED of the traffic light X is on.
+      - LVy -> Green LED of the traffic light Y is on.
+      - LCWy -> White LED of the crosswalk traffic light is on.
+      - The others LEDs are off.
 
-  2. Segunda fase:
-      - LRx: 1 -> El LED rojo del semaforo X estara encendido.
-      - LYy: 1 -> El LED amarillo del semaforo Y estara encendido.
-      - LCWx: 1 -> El LED blanco del paso peatonal estara encendido.
-      - Todos los demas LEDs estaran apagados.
+  2. Second Phase:
+      - LRx -> Red LED of the traffic light X is on.
+      - LYy -> Yellow LED of the traffic light Y is on.
+      - LCWy -> White LED of the crosswalk traffic light is on.
+      - The others LEDs are off.
 
-  3. Tercera fase:
-      - LVx: 1 -> El LED verde del semaforo X estara encendido.
-      - LRy: 1 -> El LED rojo del semaforo Y estara encendido.
-      - LCWx: 1 -> El LED blue del paso peatonal estara encendido.
-      - Todos los demas LEDs estaran apagados. 
+  3. Third Phase:
+      - LVx -> Green LED of the traffic light X is on.
+      - LRy -> Red LED of the traffic light Y is on.
+      - LCWx -> Blue LED of the crosswalk traffic light is on.
+      - The others LEDs are off.
 
-  4. Cuarta fase:
-      - LYx: 1 -> El LED amarillo del semaforo X estara encendido.
-      - LRy: 1 -> El LED rojo del semaforo Y estara encendido.
-      - LCWx: 1 -> El LED blue del paso peatonal estara encendido.
-      - Todos los demas LEDs estaran apagados. 
+  4. Quarter Phase:
+      - LYx -> Yellow LED of the traffic light X is on.
+      - LRy -> Red LED of the traffic light Y is on.
+      - LCWx -> Blue LED of the crosswalk traffic light is on.
+      - The others LEDs are off.
 
-### Creando el array      
-Estas fases las almacene en un array de dos dimensiones, la primera es el numero de fases y la segunda es el numero de LEDs. 
+### Declare the array      
+I stored these phases inside an array of two dimensions, the first is the number of the phases and the second is the number of the LEDs.
 
 ```
 const LED _array[Phases][LEDs] = {
@@ -45,41 +49,41 @@ const LED _array[Phases][LEDs] = {
 };
 ```
 
-### Tipo del array
-El tipo del array es una estructura de datos:
+### Type of the array
+The type of the array is a struct:
 
 ```
 struct LED{
-  const int pin; // Numero del pin que se encuentra el LED.
-  const int state; // Estado del LED.
+  const int pin; // Number of the pin that the LED is connected.
+  const int state; // State of the LED.
 };
 ```
 
-### Paso peatonal
-El paso peatonal esta tanto para el semaforo X como el semaforo Y. Cuando viene pedido el paso peatonal bajamos el delay que tiene cada fase hasta que el paso peatonal pedido se efectue, despues reiniciamos el delay al que tenia por defecto.
+### Crosswalk
+When the person presses the button for the crosswalk the delay decreases in each phase until the crosswalk is done, then we reset the delay to for default.
 
-Para esto declare dos variables globales de tipo booleano, crosswalk_x y crosswalk_y, estas variables inicializan con el valor false y cambian su estado cuando viene pedido el paso peatonal.
+To do this i declare two global variables of type boolean, crosswalk_x y crosswalk_y, these varbiales has false for default and their state change when the person asks for the crosswalk.
 
 ### void setup()
 ```
-// Funcion que cambia el estadp de la variable crosswalk_x a true.
+// Function that change the state of the variable crosswalk_x to true 
 void change_state_crosswalk_x(){
 	crosswalk_x = true;
 }
 
-// Funcion que cambia el estadp de la variable crosswalk_y a true.
+// Function that change the state of the variable crosswalk_y to true
 void change_state_crosswalk_y(){
 	crosswalk_y = true;
 }
 
 void setup(){
-  // Declaramos cada pin que esta conectado a cada LED.
+  // We declare each pin that the LED is connected.
   for(int i = 4; i < 12; i++){
   	pinMode(i, OUTPUT);
   }
-  pinMode(2, INPUT); // El pin 2 sera el boton del paso peatonal del semaforo X.
-  pinMode(3, INPUT); // El pin 3 sera el boton del paso peatonal del semaforo Y.
-  // Interferimos con el codigo cuando el boton viene pulsado y llamamos a la funcion conectada al boton.  
+  pinMode(2, INPUT); // The pin 2 will be the button that active the crosswalk X.
+  pinMode(3, INPUT); // The pin 3 will be the button that active the crosswalk Y.
+  // We interrupt the code when the button presses and call the fuction connected with the button.  
   attachInterrupt(digitalPinToInterrupt(2), change_state_crosswalk_x, RISING);
   attachInterrupt(digitalPinToInterrupt(3), change_state_crosswalk_y, RISING);  
 }
@@ -88,24 +92,22 @@ void setup(){
 ### void loop()
 ```
 void loop(){
-  // Iteramo cada fase del array.
+  // We iterate each phase of the array.
   for(int i = 0; i < Phases; i++){        
-    // Iteramo cada LED y con el comando digitalWrite() pasamos como parametro el pin y el estado.
+    // We iterate each LED and with the command digitalWrite we passed as params the pin and the state of the LED.     
     for(int j = 0; j < LEDs; j++){
       digitalWrite(_array[i][j].pin, _array[i][j].state);
     } 
 
-    /*
-      Por defecto en la primera y tercera fase damos un delay de 25 segundos,
-      de lo contrario si nos encontramos en otra fase el delay por defecto sera de 25 segundos.
-    */
+    
+    // For default the first and the third phase have a delay of 25 second andthe others phases have 15 seconds.          
     i == 0 || i == 2 ? delay(25000) : delay(15000);      
     
-    // Si el paso peatonal fue pedido y ya fue efectuado regresamos al valor inicial la variable.
+    // When the crosswalk is done, we reset the variables to false.  
     if(crosswalk_x == true && i == 2) crosswalk_x = false;  
     if(crosswalk_y == true && i == 0) crosswalk_y = false; 
     
-    // Si el paso peatonal no fue pedido le agregamos 5 segundos mas a cada fase.
+    // If the person dosen't ask the crosswalk we add a delay of 5 seconds.
     if(crosswalk_x == false && crosswalk_y == false) delay(5000);  
   }  
 }
