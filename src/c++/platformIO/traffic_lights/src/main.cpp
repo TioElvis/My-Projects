@@ -59,8 +59,8 @@ void loop(){
     
     i == 0 || i == 2 ? delay(25000) : delay(15000);      
 
-    if(crosswalk_x == true && (i == 2 || i == 3)) crosswalk_x = false;  
-    if(crosswalk_y == true && (i == 0 || i == 1)) crosswalk_y = false; 
+    if(crosswalk_x == true && i == 2) crosswalk_x = false;  
+    if(crosswalk_y == true && i == 0) crosswalk_y = false; 
     
     if(crosswalk_x == false && crosswalk_y == false) delay(5000);  
   }  
