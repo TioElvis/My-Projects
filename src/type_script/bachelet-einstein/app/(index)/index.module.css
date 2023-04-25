@@ -53,14 +53,6 @@
   background-color: var(--dark-blue);
 }
 
-.name_of_school {
-  font-size: 2.25rem;
-}
-
-.welcome {
-  font-size: 0.9rem;
-}
-
 .why_select_this_school {
   width: 100%;
   height: 60rem;
@@ -93,8 +85,22 @@
   gap: 0.5rem;
 }
 
-.icon {
-  width: 2rem;
+.last_events {
+  width: 100%;
+  padding: 1.25rem;
+  margin: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--alice);
+}
+
+.last_events > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 @media (min-width: 900px) {
@@ -104,14 +110,6 @@
 
   .container > div {
     width: 45rem;
-  }
-
-  .name_of_school {
-    font-size: 3rem;
-  }
-
-  .welcome {
-    font-size: 1.25rem;
   }
 
   .why_select_this_school {
@@ -128,7 +126,14 @@
     width: 50%;
     height: 100%;
   }
+
+  .last_events > div {
+    width: 50rem;
+  }
 }
 
 @media (min-width: 1200px) {
+  .last_events > div {
+    width: 60rem;
+  }
 }

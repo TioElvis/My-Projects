@@ -1,13 +1,14 @@
-import styles from './index.module.css'
-import why_select_this_school from '@/utils/why-select-this-school'
+import EventArticle from '@/components/event_article';
+import styles from './index.module.css';
+import why_select_this_school from '@/utils/why-select-this-school';
 
 export default function HomePage() {
   return (
     <>
       <div className={styles.container}>
         <div>
-          <p className={styles.name_of_school}>Bachelet-Einstein</p>
-          <p className={styles.welcome}>Qui troverai delle notizie, eventi e tanti cose che riguardano la scuola</p>
+          <p style={{ fontSize: '3rem' }}>Bachelet-Einstein</p>
+          <p style={{ fontSize: '1.25rem' }}>Qui troverai delle notizie, eventi e tanti cose che riguardano la scuola</p>
         </div>
       </div>
       <div className={styles.why_select_this_school}>
@@ -20,7 +21,7 @@ export default function HomePage() {
         </div>
         <div className={styles.options}>
           {why_select_this_school.map((element, index) => {
-            const condition = index === 0
+            const condition = index === 0;
             return (
               <article
                 key={element.title}
@@ -28,15 +29,23 @@ export default function HomePage() {
                 style={{ backgroundColor: `${element.bg_color}`, color: `${condition ? 'black' : 'white'}` }}
               >
                 <header>
-                  <element.icon className={styles.icon} />
+                  <element.icon style={{ width: '2rem' }} />
                   {element.title}
                 </header>
                 <p>{element.description}</p>
               </article>
-            )
+            );
           })}
         </div>
       </div>
+      <div className={styles.last_events}>
+        <div>
+          <h1>Prossimi Eventi</h1>
+          <EventArticle />
+          <EventArticle />
+          <EventArticle />
+        </div>
+      </div>
     </>
-  )
+  );
 }

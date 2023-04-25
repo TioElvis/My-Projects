@@ -1,14 +1,14 @@
-import Link from 'next/link'
-import '@/styles/globals.css'
-import { ReactNode } from 'react'
-import Menu from '@/components/menu'
-import styles from './index.module.css'
-import nav_pages from '@/utils/nav_pages'
-import LinkLoginProfile from '@/components/link_login_profile'
+import Link from 'next/link';
+import '@/styles/globals.css';
+import { ReactNode } from 'react';
+import Menu from '@/components/menu';
+import styles from './index.module.css';
+import nav_pages from '@/utils/nav_pages';
+import LinkLoginProfile from '@/components/link_login_profile';
 
 export const metadata = {
   title: 'I.I.S. Bachelet-Einstein',
-}
+};
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -25,7 +25,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                 <Link href={to} key={name} className={styles.link}>
                   {name}
                 </Link>
-              )
+              );
             })}
             <LinkLoginProfile />
           </nav>
@@ -35,5 +35,5 @@ export default function Layout({ children }: { children: ReactNode }) {
         <footer>I'm Footer</footer>
       </body>
     </html>
-  )
+  );
 }

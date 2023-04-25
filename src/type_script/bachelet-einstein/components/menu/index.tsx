@@ -1,17 +1,17 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { useState } from 'react'
-import { Drawer } from '@mui/material'
-import styles from './index.module.css'
-import nav_pages from '@/utils/nav_pages'
-import LinkLoginProfile from '../link_login_profile'
-import { Bars3Icon } from '@heroicons/react/24/solid'
+import Link from 'next/link';
+import { useState } from 'react';
+import { Drawer } from '@mui/material';
+import styles from './index.module.css';
+import nav_pages from '@/utils/nav_pages';
+import LinkLoginProfile from '../link_login_profile';
+import { Bars3Icon } from '@heroicons/react/24/solid';
 
 export default function Menu() {
-  const [menu, setMenu] = useState<boolean>(false)
+  const [menu, setMenu] = useState<boolean>(false);
 
-  const changeStateMenu = () => setMenu(!menu)
+  const changeStateMenu = () => setMenu(!menu);
 
   return (
     <>
@@ -29,7 +29,7 @@ export default function Menu() {
                   <Link href={to} key={name} className={styles.link}>
                     {name}
                   </Link>
-                )
+                );
               })}
             </nav>
           </div>
@@ -37,5 +37,5 @@ export default function Menu() {
         </div>
       </Drawer>
     </>
-  )
+  );
 }
