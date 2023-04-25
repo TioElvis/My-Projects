@@ -107,7 +107,7 @@ void loop(){
     if(crosswalk_x == true && i == 2) crosswalk_x = false;  
     if(crosswalk_y == true && i == 0) crosswalk_y = false; 
     
-    // If the person dosen't ask the crosswalk we add a delay of 5 seconds.
+    // If the person doesn't ask the crosswalk we add a delay of 5 seconds.
     if(crosswalk_x == false && crosswalk_y == false) delay(5000);  
   }  
 }

@@ -13,7 +13,7 @@
 #define LYy 8 
 #define LGy 9
 
-// Semaforo peatonal
+// Crosswalk traffic lights
 #define LCWx 10
 #define LCWy 11
 
