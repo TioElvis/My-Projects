@@ -35,11 +35,11 @@ export default function EventArticle() {
       </div>
       <Collapse in={collapse} timeout="auto">
         <div className={styles.collapse}>
-          <p>Feb 04, 2035, 11:00 AM – 5:00 PM</p>
-          <p>Great Hall, Brockway Community College, 500 Terry A Francois Blvd, San Francisco, CA 94158, USA I’m an event description.</p>
+          <p>Feb 04, 2035, 11:00 AM - 5:00 PM</p>
+          <p>Great Hall, Brockway Community College, 500 Terry A Francois Blvd, San Francisco, CA 94158, USA I'm an event description.</p>
           <br />
           <p>
-            Click here to open up the Event Editor and change my text. Simply click me, Manage Event and start editing your event. I’m a great place
+            Click here to open up the Event Editor and change my text. Simply click me, Manage Event and start editing your event. I'm a great place
             for you to say a little more about your upcoming event.
           </p>
         </div>

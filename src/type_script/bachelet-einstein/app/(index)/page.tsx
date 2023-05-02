@@ -1,6 +1,7 @@
 import EventArticle from '@/components/event_article';
 import styles from './index.module.css';
 import why_select_this_school from '@/utils/why-select-this-school';
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
@@ -44,6 +45,14 @@ export default function HomePage() {
           <EventArticle />
           <EventArticle />
           <EventArticle />
+        </div>
+        <div>
+          <Link href="/eventi">Vedi tutti i eventi</Link>
+        </div>
+        <div className={styles.last_news}>
+          <div>
+            <h1>Ultime Notizie</h1>
+          </div>
         </div>
       </div>
     </>
