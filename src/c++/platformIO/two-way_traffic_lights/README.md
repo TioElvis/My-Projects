@@ -6,7 +6,7 @@ Example in tinkercad: https://www.tinkercad.com/things/fqNFZuvJh8c
 ## How does it work?
 I divided the traffic lights in two ways, the first traffic light will be on the horizontal axis (X) and the second will be on the vertical axis (Y).
 
-There is a third traffic light that use for crosswalk traffic light, the blue LED is the crosswalk of the traffic light X and the white LED is the crosswalk of the traffic light Y
+There is a third traffic light that is used for crosswalk traffic light, the blue LED is the crosswalk of the traffic light X and the white LED is the crosswalk of the traffic light Y
 
 ![Ejemplo](traffic_lights.png)
 
@@ -60,7 +60,7 @@ struct LED{
 ```
 
 ### Crosswalk
-When the person presses the button for the crosswalk the delay decreases in each phase until the crosswalk is done, then we reset the delay to for default.
+When the person presses the button for the crosswalk the delay decreases in each phase until the crosswalk is done, then we reset the delay to default.
 
 To do this i declare two global variables of type boolean, crosswalk_x y crosswalk_y, these varbiales has false for default and their state change when the person asks for the crosswalk.
 
