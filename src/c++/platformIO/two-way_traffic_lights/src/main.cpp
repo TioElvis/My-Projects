@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-#define Phases 4 // Phases.
-#define LEDs 8 // Number of the LEDs.
+#define Phases 4 // Phases
+#define LEDs 8 // Number of the LEDs
 
 // Semaforo X.
 #define LRx 4 
@@ -13,7 +13,7 @@
 #define LYy 8 
 #define LGy 9
 
-// Crosswalk traffic lights.
+// Crosswalk traffic lights
 #define LCWx 10
 #define LCWy 11
 
