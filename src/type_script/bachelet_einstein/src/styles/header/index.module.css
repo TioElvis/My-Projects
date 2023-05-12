@@ -1,0 +1,42 @@
+.header {
+  width: 100%;
+  color: white;
+  padding: 1.35rem;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: sticky;
+  font-family: var(--alice);
+  background-color: var(--dark-blue);
+}
+
+.navbar {
+  display: none;
+}
+
+.navbar > a {
+  color: white;
+  padding-right: 0.5rem;
+  font-size: 0.875rem;
+  border-right: solid 1px white;
+}
+
+.navbar > a:last-child {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  border: none;
+}
+
+.navbar > a:hover {
+  color: var(--light-blue);
+}
+
+@media (min-width: 900px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

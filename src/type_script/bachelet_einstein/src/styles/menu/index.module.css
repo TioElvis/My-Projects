@@ -1,0 +1,56 @@
+.icon {
+  width: 1.75rem;
+}
+
+.icon:hover {
+  cursor: pointer;
+  color: var(--light-blue);
+}
+
+.menu {
+  width: 22rem;
+  height: 100%;
+  color: white;
+  padding: 2.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: var(--alice);
+  background-color: var(--dark-blue);
+}
+
+.navbar {
+  display: flex;
+  margin-top: 1.25rem;
+  flex-direction: column;
+}
+
+.navbar > a {
+  color: white;
+  padding: 1.25rem 0;
+  font-size: 0.975rem;
+  margin-top: 0.5rem;
+  border-bottom: solid 1px white;
+}
+
+.navbar > a:hover {
+  color: var(--light-blue);
+  border-bottom: solid 1px var(--light-blue);
+}
+
+.login {
+  display: flex;
+  color: white;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.login:hover {
+  color: var(--light-blue);
+}
+
+@media (min-width: 900px) {
+  .icon {
+    display: none;
+  }
+}
